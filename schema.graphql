@@ -5,3 +5,52 @@ type InstanceCreated @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type BetConfirmed @entity(immutable: true) {
+  id: Bytes!
+  fixtureId: Bytes! # bytes32
+  maker: Bytes! # address
+  taker: Bytes! # address
+  amount: BigInt! # uint256
+  takerProfit: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FixtureCreated @entity(immutable: true) {
+  id: Bytes!
+  startDate: BigInt! # uint64
+  token: Bytes! # address
+  consumer: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FixtureResolved @entity(immutable: true) {
+  id: Bytes!
+  fixtureId: Bytes! # bytes32
+  side: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  version: BigInt! # uint64
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PayoutCollected @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

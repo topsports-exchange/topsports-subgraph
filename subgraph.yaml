@@ -24,3 +24,34 @@ dataSources:
         - event: InstanceCreated(indexed address)
           handler: handleInstanceCreated
       file: ./src/topsports-fixture-factory.ts
+templates:
+  - kind: ethereum
+    name: TopsportsFixtureCore
+    network: sepolia
+    source:
+      abi: TopsportsFixtureCore
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BetConfirmed
+        - FixtureCreated
+        - FixtureResolved
+        - Initialized
+        - PayoutCollected
+      abis:
+        - name: TopsportsFixtureCore
+          file: ./abis/TopsportsFixtureCore.json
+      eventHandlers:
+        - event: BetConfirmed(bytes32,address,address,uint256,uint256)
+          handler: handleBetConfirmed
+        - event: FixtureCreated(uint64,address,address)
+          handler: handleFixtureCreated
+        - event: FixtureResolved(bytes32,uint16)
+          handler: handleFixtureResolved
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: PayoutCollected(address,address,uint256)
+          handler: handlePayoutCollected
+      file: ./src/topsports-fixture-core.ts
