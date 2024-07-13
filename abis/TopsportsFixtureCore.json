@@ -107,9 +107,15 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint64",
+        "internalType": "string",
+        "name": "fullId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint40",
         "name": "startDate",
-        "type": "uint64"
+        "type": "uint40"
       },
       {
         "indexed": false,
@@ -236,8 +242,9 @@
   },
   {
     "inputs": [
+      { "internalType": "string", "name": "_fullId", "type": "string" },
       { "internalType": "uint64", "name": "_eventId", "type": "uint64" },
-      { "internalType": "uint64", "name": "_startDate", "type": "uint64" },
+      { "internalType": "uint40", "name": "_startDate", "type": "uint40" },
       { "internalType": "address", "name": "_token", "type": "address" },
       { "internalType": "address", "name": "_consumer", "type": "address" },
       { "internalType": "bytes32", "name": "_resolverHash", "type": "bytes32" }
@@ -297,7 +304,7 @@
   {
     "inputs": [],
     "name": "startDate",
-    "outputs": [{ "internalType": "uint64", "name": "", "type": "uint64" }],
+    "outputs": [{ "internalType": "uint40", "name": "", "type": "uint40" }],
     "stateMutability": "view",
     "type": "function"
   },

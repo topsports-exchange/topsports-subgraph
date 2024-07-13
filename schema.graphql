@@ -21,6 +21,7 @@ type BetConfirmed @entity(immutable: true) {
 
 type FixtureCreated @entity(immutable: true) {
   id: Bytes!
+  fullId: String! # string
   startDate: BigInt! # uint64
   token: Bytes! # address
   consumer: Bytes! # address

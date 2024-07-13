@@ -37,6 +37,7 @@ export function handleFixtureCreated(event: FixtureCreatedEvent): void {
   let entity = new FixtureCreated(
     Bytes.fromByteArray(crypto.keccak256(event.address)),
   );
+  entity.fullId = event.params.fullId;
   entity.startDate = event.params.startDate;
   entity.token = event.params.token;
   entity.consumer = event.params.consumer;
