@@ -26,6 +26,7 @@ type FixtureCreated @entity(immutable: true) {
   token: Bytes! # address
   consumer: Bytes! # address
   bets: [BetConfirmed!] @derivedFrom(field: "fixture")
+  contract: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

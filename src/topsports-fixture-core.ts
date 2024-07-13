@@ -1,4 +1,4 @@
-import { Bytes, crypto } from "@graphprotocol/graph-ts";
+import { ByteArray, Bytes, crypto } from "@graphprotocol/graph-ts";
 import {
   BetConfirmed as BetConfirmedEvent,
   FixtureCreated as FixtureCreatedEvent,
@@ -35,12 +35,16 @@ export function handleBetConfirmed(event: BetConfirmedEvent): void {
 
 export function handleFixtureCreated(event: FixtureCreatedEvent): void {
   let entity = new FixtureCreated(
-    Bytes.fromByteArray(crypto.keccak256(event.address)),
+    Bytes.fromByteArray(
+      crypto.keccak256(ByteArray.fromUTF8(event.params.fullId)),
+    ),
   );
   entity.fullId = event.params.fullId;
   entity.startDate = event.params.startDate;
   entity.token = event.params.token;
   entity.consumer = event.params.consumer;
+
+  entity.contract = event.address;
 
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
