@@ -13,6 +13,7 @@ type BetConfirmed @entity(immutable: true) {
   taker: Bytes! # address
   amount: BigInt! # uint256
   takerProfit: BigInt! # uint256
+  fixture: FixtureCreated!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
@@ -23,6 +24,7 @@ type FixtureCreated @entity(immutable: true) {
   startDate: BigInt! # uint64
   token: Bytes! # address
   consumer: Bytes! # address
+  bets: [BetConfirmed!] @derivedFrom(field: "fixture")
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

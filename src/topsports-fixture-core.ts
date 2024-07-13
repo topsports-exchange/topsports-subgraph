@@ -24,6 +24,8 @@ export function handleBetConfirmed(event: BetConfirmedEvent): void {
   entity.amount = event.params.amount;
   entity.takerProfit = event.params.takerProfit;
 
+  entity.fixture = event.params.fixtureId;
+
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
   entity.transactionHash = event.transaction.hash;
