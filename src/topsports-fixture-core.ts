@@ -5,7 +5,7 @@ import {
   FixtureResolved as FixtureResolvedEvent,
   Initialized as InitializedEvent,
   PayoutCollected as PayoutCollectedEvent,
-} from "../generated/TopsportsFixtureCore/TopsportsFixtureCore";
+} from "../generated/templates/TopsportsFixtureCore/TopsportsFixtureCore";
 import {
   BetConfirmed,
   FixtureCreated,
