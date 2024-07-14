@@ -8,9 +8,9 @@ dataSources:
     name: TopsportsFixtureFactory
     network: sepolia
     source:
-      address: "0xAE997d0EB220BFa5619eC49D2CDf4A58b5678E42"
+      address: "0x6209f7ff30Dc8f642d417648E6186013Fb39B9B6"
       abi: TopsportsFixtureFactory
-      startBlock: 6298157
+      startBlock: 6309022
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -44,11 +44,11 @@ templates:
         - name: TopsportsFixtureCore
           file: ./abis/TopsportsFixtureCore.json
       eventHandlers:
-        - event: BetConfirmed(bytes32,address,address,uint256,uint256)
+        - event: BetConfirmed(address,address,uint256,uint256)
           handler: handleBetConfirmed
         - event: FixtureCreated(string,uint40,address,address)
           handler: handleFixtureCreated
-        - event: FixtureResolved(bytes32,uint16)
+        - event: FixtureResolved(uint16)
           handler: handleFixtureResolved
         - event: Initialized(uint64)
           handler: handleInitialized

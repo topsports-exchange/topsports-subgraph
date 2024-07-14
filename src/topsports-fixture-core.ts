@@ -1,4 +1,3 @@
-import { ByteArray, Bytes, crypto } from "@graphprotocol/graph-ts";
 import {
   BetConfirmed as BetConfirmedEvent,
   FixtureCreated as FixtureCreatedEvent,
@@ -18,13 +17,12 @@ export function handleBetConfirmed(event: BetConfirmedEvent): void {
   let entity = new BetConfirmed(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   );
-  entity.fixtureId = event.params.fixtureId;
   entity.maker = event.params.maker;
   entity.taker = event.params.taker;
   entity.amount = event.params.amount;
   entity.takerProfit = event.params.takerProfit;
 
-  entity.fixture = event.params.fixtureId;
+  entity.fixture = event.address;
 
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
@@ -34,11 +32,7 @@ export function handleBetConfirmed(event: BetConfirmedEvent): void {
 }
 
 export function handleFixtureCreated(event: FixtureCreatedEvent): void {
-  let entity = new FixtureCreated(
-    Bytes.fromByteArray(
-      crypto.keccak256(ByteArray.fromUTF8(event.params.fullId)),
-    ),
-  );
+  let entity = new FixtureCreated(event.address);
   entity.fullId = event.params.fullId;
   entity.startDate = event.params.startDate;
   entity.token = event.params.token;
@@ -57,7 +51,6 @@ export function handleFixtureResolved(event: FixtureResolvedEvent): void {
   let entity = new FixtureResolved(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   );
-  entity.fixtureId = event.params.fixtureId;
   entity.side = event.params.side;
 
   entity.blockNumber = event.block.number;

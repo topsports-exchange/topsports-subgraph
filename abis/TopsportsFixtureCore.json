@@ -70,12 +70,6 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "bytes32",
-        "name": "fixtureId",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
         "internalType": "address",
         "name": "maker",
         "type": "address"
@@ -136,12 +130,6 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "fixtureId",
-        "type": "bytes32"
-      },
       {
         "indexed": false,
         "internalType": "uint16",
